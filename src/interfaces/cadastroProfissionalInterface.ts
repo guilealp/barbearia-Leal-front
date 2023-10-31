@@ -1,4 +1,4 @@
-export interface cadastroClienteInterface{
+export interface cadastroProfissionalInterface{
     id:number;
     nome:string;
     celular:string;
@@ -14,4 +14,5 @@ export interface cadastroClienteInterface{
     cep:string;
     complemento:string;
     password:string;
+    salario:string;
 }

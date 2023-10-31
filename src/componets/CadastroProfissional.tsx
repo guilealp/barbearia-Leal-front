@@ -4,7 +4,7 @@ import Footer from './Footer';
 import Header from "./Header";
 import Styles from '../app.module.css';
 import axios from 'axios';
-const CadastroClientes = () => {
+const CadastroProfissional = () => {
 
     const [nome, setNome] = useState<string>("");
     const [celular, setCelular] = useState<string>("");
@@ -20,10 +20,10 @@ const CadastroClientes = () => {
     const [cep, setCep] = useState<string>();
     const [complemeto, setComplemeto] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-
-    const cadastroClientes = (e: FormEvent) => {
+    const [salario, setSalario] = useState<string>("");
+    const cadastroProffssional = (e: FormEvent) => {
         e.preventDefault();
-        const dadosDoCliente = {
+        const dadosDoProfissional = {
             nome: nome,
             celular: celular,
             email: email,
@@ -37,9 +37,10 @@ const CadastroClientes = () => {
             bairro: bairro,
             cep: cep,
             complemeto: complemeto,
-            password: password
+            password: password,
+            salario: salario
         }
-        axios.post('http://127.0.0.1:8000/api/cliente', dadosDoCliente, {
+        axios.post('http://127.0.0.1:8000/api/profissional', dadosDoProfissional, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -50,7 +51,7 @@ const CadastroClientes = () => {
                 console.log(response.data.error);
             }
             else{
-                window.location.href = "listagem/Clientes";
+                window.location.href = "listagem/Profissional";
             }
         }).catch(function(error){
             console.log(error);
@@ -101,6 +102,9 @@ const CadastroClientes = () => {
         if (e.target.name === "password") {
             setPassword(e.target.value)
         }
+        if (e.target.name === "salario") {
+            setSalario(e.target.value)
+        }
     }
 
     return (
@@ -110,8 +114,8 @@ const CadastroClientes = () => {
                 <div className='container'>
                     <div className='card text-bg-secondary'>
                         <div className='card-body '>
-                            <h5 className='card-title'>Cadastro de Cliente</h5>
-                            <form onSubmit={cadastroClientes} className='row g-4'>
+                            <h5 className='card-title'>Cadastro de Profissional</h5>
+                            <form onSubmit={cadastroProffssional} className='row g-4'>
                                 <div className='col-8'>
                                     <label htmlFor="nome" className='form-label'>Nome</label>
                                     <input type="text" name='nome' className='form-control' required onChange={handleState} />
@@ -164,9 +168,13 @@ const CadastroClientes = () => {
                                     <label htmlFor="complemeto" className='form-label'>Complemeto</label>
                                     <input type="text" name='complemeto' className='form-control' required onChange={handleState} />
                                 </div>
-                                <div className='col-6'>
+                                <div className='col-4'>
                                     <label htmlFor="password" className='form-label'>Senha</label>
                                     <input type="password" name='password' className='form-control' required onChange={handleState} />
+                                </div>
+                                <div className='col-2'>
+                                    <label htmlFor="salario" className='form-label'>Salario</label>
+                                    <input type="text" name='salario' className='form-control' required onChange={handleState} />
                                 </div>
                                 <div className='col-12'>
                                     <button type='submit' className='btn btn-success bt-sm'>Cadastrar</button>
@@ -180,4 +188,4 @@ const CadastroClientes = () => {
     );
 }
 
-export default CadastroClientes;
+export default CadastroProfissional;
