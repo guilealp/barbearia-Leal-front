@@ -3,6 +3,7 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'r
 
 import Styles from '../app.module.css';
 import { cadastroClienteInterface } from '../interfaces/cadastroClienteInterface';
+import { Link } from 'react-router-dom';
 const ListagemClientes = () => {
 
     const [cliente, setCliente] = useState<cadastroClienteInterface[]>([]);
@@ -112,7 +113,7 @@ const ListagemClientes = () => {
                                     <td>{cliente.numero}</td>
                                     <td>{cliente.bairro}</td>
                                     <td>{cliente.cep}</td>
-                                    <td><a href="#" className='btn btn-primary btn-sm'>Editar</a>
+                                    <td><Link to={"/editar/cliente/"+cliente.id} className='btn btn-primary btn-sm'>Editar</Link>
                                     <a href="#" className='btn btn-danger btn-sm'>Excluir</a></td>
                                 </tr>
                                 ))}

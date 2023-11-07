@@ -3,9 +3,11 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'r
 
 import Styles from '../app.module.css';
 import { cadastroServiçoInterface } from '../interfaces/cadastroServiçoInterface';
+import { Link } from 'react-router-dom';
+import Footer from './Footer';
 const ListagemServico = () => {
 
-    const [usuarios, setUsuarios] = useState<cadastroServiçoInterface[]>([]);
+    const [servico, setServico] = useState<cadastroServiçoInterface[]>([]);
     const [pesquisa,setPesquisa]= useState<string>('')
     const [error, setError] = useState("");
 
@@ -26,7 +28,7 @@ const ListagemServico = () => {
                     "Content-Type":"application/json"
                 }
             }).then(function(response){
-                setUsuarios(response.data.data);
+                setServico(response.data.data);
             }).catch(function(error){
                 console.log(error);
             })
@@ -42,7 +44,7 @@ const ListagemServico = () => {
         async function fetchData(){
             try{
                 const response = await axios.get('http://127.0.0.1:8000/api/serviço/all');
-                setUsuarios(response.data.data); 
+                setServico(response.data.data); 
             }catch(error){
                 setError("ocorreu um erro");
                 console.log(error);
@@ -89,14 +91,14 @@ const ListagemServico = () => {
                             </thead>
                             
                             <tbody>
-                                {usuarios.map(usuario => (
-                                <tr key={usuario.id}>
-                                    <td>{usuario.id}</td>
-                                    <td>{usuario.nome}</td>
-                                    <td>{usuario.descricao}</td>
-                                    <td>{usuario.duracao}</td>
-                                    <td>{usuario.preco}</td>
-                                    <td><a href="#" className='btn btn-primary btn-sm'>Editar</a>
+                                {servico.map(servico => (
+                                <tr key={servico.id}>
+                                    <td>{servico.id}</td>
+                                    <td>{servico.nome}</td>
+                                    <td>{servico.descricao}</td>
+                                    <td>{servico.duracao}</td>
+                                    <td>{servico.preco}</td>
+                                    <td><Link to={"/editar/serviço/"+servico.id} className='btn btn-primary btn-sm'>Editar</Link>
                                     <a href="#" className='btn btn-danger btn-sm'>Excluir</a></td>
                                 </tr>
                                 ))}
@@ -106,6 +108,7 @@ const ListagemServico = () => {
                     </div>
                 </div>
             </main>
+            <Footer />
         </div>
     );
 }

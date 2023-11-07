@@ -3,6 +3,8 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'r
 
 import Styles from '../app.module.css';
 import { cadastroProfissionalInterface } from '../interfaces/cadastroProfissionalInterface';
+import Footer from './Footer';
+import { Link } from 'react-router-dom';
 const ListagemProfissional = () => {
 
     const [profissional, setProfissional] = useState<cadastroProfissionalInterface[]>([]);
@@ -114,7 +116,7 @@ const ListagemProfissional = () => {
                                     <td>{profissional.bairro}</td>
                                     <td>{profissional.cep}</td>
                                     <td>{profissional.salario}</td>
-                                    <td><a href="#" className='btn btn-primary btn-sm'>Editar</a>
+                                    <td><Link to={"/editar/profissional/"+profissional.id} className='btn btn-primary btn-sm'>Editar</Link>
                                     <a href="#" className='btn btn-danger btn-sm'>Excluir</a></td>
                                 </tr>
                                 ))}
@@ -124,6 +126,7 @@ const ListagemProfissional = () => {
                     </div>
                 </div>
             </main>
+            <Footer />
         </div>
     );
 }

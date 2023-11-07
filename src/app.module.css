@@ -3,6 +3,8 @@
     text-align: center;
     padding: 2em;
     background-image: url('fotos/espaco-masculino.avif');
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 
@@ -15,4 +17,5 @@
 }
 input{
     border-radius: 45px;
+    opacity: 100%;
 }
