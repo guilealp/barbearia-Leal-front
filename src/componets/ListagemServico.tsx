@@ -69,7 +69,7 @@ const ListagemServico = () => {
                                         <input type="text" name='pesquisa' className='form-control' onChange={handleState}/>
                                     </div>
                                     <div className='col-1'>
-                                        <button type='submit' className='btn btn-success'>Pesquisar</button>
+                                        <button type='submit' className='btn btn-outline-success'>Pesquisar</button>
                                     </div>
                                 </form>
                             </div>

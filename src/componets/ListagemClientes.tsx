@@ -3,7 +3,7 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'r
 
 import Styles from '../app.module.css';
 import { cadastroClienteInterface } from '../interfaces/cadastroClienteInterface';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 const ListagemClientes = () => {
 
     const [cliente, setCliente] = useState<cadastroClienteInterface[]>([]);
@@ -20,7 +20,7 @@ const ListagemClientes = () => {
 
         async function fetchData() {try{
 
-            const response = await axios.post('http://127.0.0.1:8000/api/find/serviço',
+            const response = await axios.post('http://127.0.0.1:8000/api/find/cliente',
             {nome:pesquisa},{
                 headers:{
                     "Accept":"application/json",
@@ -38,6 +38,31 @@ const ListagemClientes = () => {
         }
         fetchData();
     }
+    const parametro = useParams();
+
+    const deletar = (e: FormEvent)=>{
+        e.preventDefault();
+
+        async function fetchData() {try{
+
+            const response = await axios.post('http://127.0.0.1:8000/api/find/cliente/'+parametro.id,{
+                headers:{
+                    "Accept":"application/json",
+                    "Content-Type":"application/json"
+                }
+            }).then(function(response){
+                setCliente(response.data.data);
+            }).catch(function(error){
+                console.log(error);
+            })
+        }catch(error){
+            console.log(error);
+        }
+            
+        }
+        fetchData();
+    }
+
 
     useEffect(() => {
         async function fetchData(){
@@ -114,7 +139,7 @@ const ListagemClientes = () => {
                                     <td>{cliente.bairro}</td>
                                     <td>{cliente.cep}</td>
                                     <td><Link to={"/editar/cliente/"+cliente.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                    <a href="#" className='btn btn-danger btn-sm'>Excluir</a></td>
+                                    <a href="#" className='btn btn-danger btn-sm' onSubmit={deletar}>Excluir</a></td>
                                 </tr>
                                 ))}
                             </tbody>
