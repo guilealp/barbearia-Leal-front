@@ -57,6 +57,32 @@ const ListagemProfissional = () => {
 
     return (
         <div>
+            <nav className='navbar navbar-expand-lg navbar-dark bg-primary '>
+        <div className="container-fluid">
+            
+
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#conteudoNavbar" aria-controls="conteudoNavbar" aria-expanded="false" aria-label="Toggle Navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="container">
+                <div className="justify-content-center" id="conteudoNavbar">
+                    <ul className="navbar-nav mr-auto mb-2 mb-lg-0 justify-content-center ">
+                        <li className="nav-item">
+                            <Link to={'/listagem/Clientes'} className="nav-link active">Listagem de Clientes</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={'/listagem/Serviço'} className="nav-link active">Listagem de Servico</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={"/listagem/Profissional"} className="nav-link active">Listagem de profissional</Link>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
             <main className={Styles.main}>
                 <div className='container'>
 

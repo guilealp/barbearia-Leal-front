@@ -38,31 +38,9 @@ const ListagemClientes = () => {
         }
         fetchData();
     }
-    const parametro = useParams();
 
-    const deletar = (e: FormEvent)=>{
-        e.preventDefault();
 
-        async function fetchData() {try{
-
-            const response = await axios.post('http://127.0.0.1:8000/api/find/cliente/'+parametro.id,{
-                headers:{
-                    "Accept":"application/json",
-                    "Content-Type":"application/json"
-                }
-            }).then(function(response){
-                setCliente(response.data.data);
-            }).catch(function(error){
-                console.log(error);
-            })
-        }catch(error){
-            console.log(error);
-        }
-            
-        }
-        fetchData();
-    }
-
+    
 
     useEffect(() => {
         async function fetchData(){
@@ -81,6 +59,32 @@ const ListagemClientes = () => {
 
     return (
         <div>
+            <nav className='navbar navbar-expand-lg navbar-dark bg-primary '>
+        <div className="container-fluid">
+            
+
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#conteudoNavbar" aria-controls="conteudoNavbar" aria-expanded="false" aria-label="Toggle Navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="container">
+                <div className="justify-content-center" id="conteudoNavbar">
+                    <ul className="navbar-nav mr-auto mb-2 mb-lg-0 justify-content-center ">
+                        <li className="nav-item">
+                            <Link to={'/listagem/Clientes'} className="nav-link active">Listagem de Clientes</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={'/listagem/Serviço'} className="nav-link active">Listagem de Servico</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={"/listagem/Profissional"} className="nav-link active">Listagem de profissional</Link>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
             <main className={Styles.main}>
                 <div className='container'>
 
@@ -139,7 +143,7 @@ const ListagemClientes = () => {
                                     <td>{cliente.bairro}</td>
                                     <td>{cliente.cep}</td>
                                     <td><Link to={"/editar/cliente/"+cliente.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                    <a href="#" className='btn btn-danger btn-sm' onSubmit={deletar}>Excluir</a></td>
+                                    <a className='btn btn-danger btn-sm'>Excluir</a></td>
                                 </tr>
                                 ))}
                             </tbody>
