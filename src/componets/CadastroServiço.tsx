@@ -5,6 +5,7 @@ import Header from "./Header";
 import Styles from '../app.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 const CadastroServiço = () => {
 
     const[nome, setNome] = useState<string>("");

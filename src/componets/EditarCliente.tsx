@@ -45,6 +45,7 @@ const EditarCliente =()=>{
             complemeto: complemeto,
             id:id
         }
+        
         axios.put("http://127.0.0.1:8000/api/editar/cliente", dados,
         {
             headers:{
@@ -57,6 +58,7 @@ const EditarCliente =()=>{
             console.log('ocorreu um erro ao atualizar');
             
         })
+        
     }
 
     useEffect(()=> {

@@ -4,11 +4,14 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'r
 import Styles from '../app.module.css';
 import { cadastroClienteInterface } from '../interfaces/cadastroClienteInterface';
 import { Link, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 const ListagemClientes = () => {
 
     const [cliente, setCliente] = useState<cadastroClienteInterface[]>([]);
     const [pesquisa,setPesquisa]= useState<string>('')
     const [error, setError] = useState("");
+
+    const parametro = useParams();
 
     const handleState = (e: ChangeEvent<HTMLInputElement>)=>{
         if(e.target.name === "pesquisa"){
@@ -38,7 +41,52 @@ const ListagemClientes = () => {
         }
         fetchData();
     }
+    function handleDelete(id: number) {
 
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Tem certeza?",
+            text: "Você não poderá reverter isso!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sim, exclua-o!",
+            cancelButtonText: "Não, cancele!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire({
+                    title: "Deletado!",
+                    text: "O cliente foi excluido",
+                    icon: "success"
+                });
+
+                axios.delete('http://127.0.0.1:8000/api/cliente/excluir/' + id)
+                    .then(function (response) {
+                        window.location.href = "/listagem/Clientes"
+                    }).catch(function (error) {
+                        console.log("ocorreu um erro")
+                    })
+            } else if (
+               
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelado",
+                    text: "O Cliente não foi excluido :)",
+                    icon: "error"
+                });
+            }
+        });
+
+
+
+    }
 
     
 
@@ -48,6 +96,7 @@ const ListagemClientes = () => {
                 const response = await axios.get('http://127.0.0.1:8000/api/cliente/all');
                 setCliente(response.data.data); 
             }catch(error){
+                window.location.href= "/listagem/Clientes";
                 setError("ocorreu um erro");
                 console.log(error);
                 
@@ -143,7 +192,7 @@ const ListagemClientes = () => {
                                     <td>{cliente.bairro}</td>
                                     <td>{cliente.cep}</td>
                                     <td><Link to={"/editar/cliente/"+cliente.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                    <a className='btn btn-danger btn-sm'>Excluir</a></td>
+                                    <a className='btn btn-danger btn-sm' onClick={() => handleDelete(cliente.id)}>Excluir</a></td>
                                 </tr>
                                 ))}
                             </tbody>
