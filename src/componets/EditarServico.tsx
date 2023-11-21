@@ -20,14 +20,14 @@ const EditarServico =()=>{
     const atualizar = (e: FormEvent)=>{
         e.preventDefault();
 
-        const dados = {
+        const dadosDoServico = {
             nome:nome,
             descricao:descricao,
             duracao:duracao,
             preco:preco,
             id:id
         }
-        axios.put("http://127.0.0.1:8000/api/editar", dados,
+        axios.put("http://127.0.0.1:8000/api/editar", dadosDoServico,
         {
             headers:{
                 "Accept":"application/json",

@@ -30,7 +30,7 @@ const EditarProfissional =()=>{
     const atualizarProfissional = (e: FormEvent)=>{
         e.preventDefault();
 
-        const dados = {
+        const dadosDoProfissional = {
             nome: nome,
             celular: celular,
             email: email,
@@ -47,7 +47,7 @@ const EditarProfissional =()=>{
             salario: salario,
             id:id
         }
-        axios.put("http://127.0.0.1:8000/api/editar/Profissional", dados,
+        axios.put("http://127.0.0.1:8000/api/editar/Profissional", dadosDoProfissional,
         {
             headers:{
                 "Accept":"application/json",

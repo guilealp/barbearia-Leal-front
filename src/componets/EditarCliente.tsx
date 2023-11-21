@@ -29,7 +29,7 @@ const EditarCliente =()=>{
     const atualizarCliente = (e: FormEvent)=>{
         e.preventDefault();
 
-        const dados = {
+        const dadosDoCliente = {
             nome: nome,
             celular: celular,
             email: email,
@@ -46,7 +46,7 @@ const EditarCliente =()=>{
             id:id
         }
         
-        axios.put("http://127.0.0.1:8000/api/editar/cliente", dados,
+        axios.put("http://127.0.0.1:8000/api/editar/cliente", dadosDoCliente,
         {
             headers:{
                 "Accept":"application/json",

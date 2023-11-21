@@ -15,14 +15,14 @@ const CadastroServiço = () => {
 
     const cadastrarServico = (e: FormEvent) => {
         e.preventDefault();
-        const dados={
+        const dadosDoServico={
             nome:nome,
             descricao:descricao,
             duracao:duracao,
             preco:preco
         } 
           
-    axios.post('http://127.0.0.1:8000/api/servico',dados,{
+    axios.post('http://127.0.0.1:8000/api/servico',dadosDoServico,{
         headers:{
             "Accept":"application/json",
             "Content-Type":"application/json"
