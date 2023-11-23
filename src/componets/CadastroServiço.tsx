@@ -5,7 +5,7 @@ import Header from "./Header";
 import Styles from '../app.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
+
 const CadastroServiço = () => {
 
     const[nome, setNome] = useState<string>("");
@@ -83,7 +83,7 @@ const CadastroServiço = () => {
     </nav>
     <main className={Styles.main}>               
      <div className='container'>
-                    <div className='card'>
+                    <div className='card text-bg-secondary'>
                         <div className='card-body'>
                             <h5 className='card-title'>Cadastrar um serviço</h5>
                             <form onSubmit={cadastrarServico}className='row g-4'>

@@ -106,7 +106,7 @@ const EditarServico =()=>{
             <main className={Styles.main}>
                 <div className='container'>
                     <div className='card'>
-                        <div className='card-body'>
+                        <div className='card-body text-bg-secondary'>
                             <h5 className='card-title'>editar Serviço</h5>
                             <form onSubmit={atualizar} className='row g-3'>
                             <div className='col-6'>

@@ -1,46 +1,54 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Barbearia Leal com PHP e Laravel
 
-## Available Scripts
+Este projeto é focado em uma imobiliaria que ira utilizar as linguagens de programação API e retorno dos dados no formato JSON usando a linguagem PHP e o framework Laravel.
+Neste projeto ira conter o principais arquivos da Barbearia Leal como os programas de login e cadastro.
 
-In the project directory, you can run:
+## Requisitos
 
-### `npm start`
+Certifique-se de ter os seguintes requisitos atendidos antes de começar a trabalhar nos exercícios:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- PHP instalado
+- Composer instalado
+- Laravel Framework instalado
+- 7-Zip instalado
+- Git instalado
+- Editor de código de sua preferência
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Como utilizar este repositório
 
-### `npm test`
+1. Clone este repositório para o seu ambiente de desenvolvimento local utilizando o comando:
+```
+ git clone https://github.com/guilealp/barbearia-Leal-front.git
+```
+2. Acesse o diretório do projeto:
+```
+cd barbearia-leal-Front
+```
+3. Inicializar o repositorio
+```
+npm install
+```
+4. Acessar o Visual Studio Code
+```
+code .
+```
+5. Starta o site
+```
+npm start
+```
+# insominia
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=criar%20servi%C3%A7o&uri=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fservico)
 
-### `npm run build`
+## Licença
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Este projeto está licenciado sob a [MIT License](LICENSE), o que significa que você pode utilizá-lo livremente para fins educacionais, comerciais ou pessoais.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contato
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Em caso de dúvidas, sugestões ou problemas, sinta-se à vontade para entrar em contato através do email:guilherme.3110@hotmail.com.
 
-### `npm run eject`
+**Aviso**: Certifique-se de substituir "guilealp" no link de clonagem e "guilherme.3110@hotmail.com" na seção de contato pelos valores correspondentes do seu próprio usuário do GitHub e endereço de e-mail.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Este é apenas um modelo básico de README.md, você pode adaptar e melhorar conforme suas necessidades específicas de projeto. Certifique-se de incluir informações importantes sobre como configurar, executar e testar os exercícios, bem como qualquer outra documentação relevante para tornar o repositório mais amigável e útil para outros desenvolvedores.

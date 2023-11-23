@@ -60,6 +60,24 @@ const CadastroProfissional = () => {
 
     }
 
+    const findCep = (e: FormEvent) => {
+        e.preventDefault();
+
+        fetch('https://viacep.com.br/ws/'+cep+'/json/',
+        {
+            method: 'GET'
+        }).then(response => response.json())
+        .then(
+            data => {
+                setRua(data.logradouro);
+                setCidade(data.localidade)
+                setEstado(data.uf);
+                
+            }
+        ).catch(error=>{console.log("pesquisa Invalida")});
+        
+    }
+
     const handleState = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.name === "nome") {
             setNome(e.target.value)
@@ -165,11 +183,11 @@ const CadastroProfissional = () => {
                                 </div>
                                 <div className='col-4'>
                                     <label htmlFor="cidade" className='form-label'>Cidade</label>
-                                    <input type="text" name='cidade' className='form-control' required onChange={handleState} />
+                                    <input type="text" name='cidade' className='form-control' required onChange={handleState}  value={cidade}/>
                                 </div>
                                 <div className='col-1'>
                                     <label htmlFor="estado" className='form-label'>Estado</label>
-                                    <input type="text" name='estado' className='form-control' required onChange={handleState} />
+                                    <input type="text" name='estado' className='form-control' required onChange={handleState} value={estado}/>
                                 </div>
                                 <div className='col-3'>
                                     <label htmlFor="pais" className='form-label'>Pais</label>
@@ -177,7 +195,7 @@ const CadastroProfissional = () => {
                                 </div>
                                 <div className='col-8'>
                                     <label htmlFor="rua" className='form-label'>Rua</label>
-                                    <input type="text" name='rua' className='form-control' required onChange={handleState} />
+                                    <input type="text" name='rua' className='form-control' required onChange={handleState} value={rua}/>
                                 </div>
                               
                                 <div className='col-3'>
@@ -189,7 +207,7 @@ const CadastroProfissional = () => {
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="cep" className='form-label'>Cep</label>
-                                    <input type="text" name='cep' className='form-control' required onChange={handleState} />
+                                    <input type="text" name='cep' onBlur={findCep} className='form-control' required onChange={handleState} onSubmit={findCep}/>
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="complemeto" className='form-label'>Complemeto</label>

@@ -7,6 +7,7 @@ import { cadastroServiçoInterface } from '../interfaces/cadastroServiçoInterfa
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import Swal from 'sweetalert2';
+import Header from './Header';
 const ListagemServico = () => {
 
     const [servico, setServico] = useState<cadastroServiçoInterface[]>([]);
@@ -105,6 +106,7 @@ const ListagemServico = () => {
 
     return (
         <div>
+             <Header />
             <nav className='navbar navbar-expand-lg navbar-dark bg-primary '>
         <div className="container-fluid">
             
@@ -135,24 +137,25 @@ const ListagemServico = () => {
                 <div className='container'>
 
                     <div className='col-md bm-3'>
-                        <div className='card'>
+                        <div className='card text-bg-secondary'>
                             <div className='card-body'>
                                 <h5 className='card-title'>Pesquisar</h5>
                                 <form onSubmit={buscar} className='row'>
                                     <div className='col-10'>
                                         <input type="text" name='pesquisa' className='form-control' onChange={handleState}/>
                                     </div>
-                                    <div className='col-1'>
-                                        <button type='submit' className=''>Pesquisar</button>
+                                    <div className='col-2'>
+                                        <button type='submit' className='btn btn-success'>Pesquisar</button>
+                                        <Link to={"/cadastro/Serviço"} className='btn btn-primary'>cadastrar</Link>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div className='card'>
+                    <div className='card text-bg-secondary'>
                         <div className='card-body'>
                             <h5 className='card-title'>Lista De Serviços</h5>
-                            <table className='table teble-hover'>
+                            <table className='table teble-hover table-dark table-striped'>
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -173,7 +176,9 @@ const ListagemServico = () => {
                                     <td>{servico.duracao}</td>
                                     <td>{servico.preco}</td>
                                     <td><Link to={"/editar/serviço/"+servico.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                    <a onClick={()=>handleDelete(servico.id)} className='btn btn-danger btn-sm'>Excluir</a></td>
+                                    <a onClick={()=>handleDelete(servico.id)} className='btn btn-danger btn-sm'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
+  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+</svg></a></td>
                                 </tr>
                                 ))}
                             </tbody>
