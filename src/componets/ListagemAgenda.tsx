@@ -1,15 +1,16 @@
 import axios from 'axios';
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
 
-import Styles from '../app.module.css';
-import { cadastroProfissionalInterface } from '../interfaces/cadastroProfissionalInterface';
-import Footer from './Footer';
-import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Header from "./Header";
-const ListagemProfissional = () => {
 
-    const [profissional, setProfissional] = useState<cadastroProfissionalInterface[]>([]);
+import Styles from '../app.module.css';
+import { Link } from 'react-router-dom';
+import Footer from './Footer';
+import Swal from 'sweetalert2';
+import Header from './Header';
+import { cadastroAgendaInterface } from '../interfaces/cadastroAgendaInterface';
+const ListagemAgenda = () => {
+
+    const [agenda, setAgenda] = useState<cadastroAgendaInterface[]>([]);
     const [pesquisa,setPesquisa]= useState<string>('')
     const [error, setError] = useState("");
 
@@ -23,14 +24,14 @@ const ListagemProfissional = () => {
 
         async function fetchData() {try{
 
-            const response = await axios.post('http://127.0.0.1:8000/api/find/profissional',
+            const response = await axios.post('http://127.0.0.1:8000/api/find/serviço',
             {nome:pesquisa},{
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json"
                 }
             }).then(function(response){
-                setProfissional(response.data.data);
+                setAgenda(response.data.data);
             }).catch(function(error){
                 console.log(error);
             })
@@ -41,8 +42,6 @@ const ListagemProfissional = () => {
         }
         fetchData();
     }
-   
-
     function handleDelete(id: number) {
 
         const swalWithBootstrapButtons = Swal.mixin({
@@ -68,9 +67,9 @@ const ListagemProfissional = () => {
                     icon: "success"
                 });
 
-                axios.delete('http://127.0.0.1:8000/api/Profissional/excluir/' + id)
+                axios.delete('http://127.0.0.1:8000/api/Agenda/excluir/' + id)
                     .then(function (response) {
-                        window.location.href = "/listagem/profissional"
+                        window.location.href = "/listagem/Agenda"
                     }).catch(function (error) {
                         console.log("ocorreu um erro")
                     })
@@ -90,12 +89,11 @@ const ListagemProfissional = () => {
 
     }
 
-
     useEffect(() => {
         async function fetchData(){
             try{
-                const response = await axios.get('http://127.0.0.1:8000/api/Profissional/all');
-                setProfissional(response.data.data); 
+                const response = await axios.get('http://127.0.0.1:8000/api/Agenda/all');
+                setAgenda(response.data.data); 
             }catch(error){
                 setError("ocorreu um erro");
                 console.log(error);
@@ -147,58 +145,36 @@ const ListagemProfissional = () => {
                                         <input type="text" name='pesquisa' className='form-control' onChange={handleState}/>
                                     </div>
                                     <div className='col-2'>
-                                    <button type='submit' className='btn btn-success'>Pesquisar</button>
-                                        <Link to={"/cadastro/Profissional"} className='btn btn-primary'>cadastrar</Link>
+                                        <button type='submit' className='btn btn-success'>Pesquisar</button>
+                                        <Link to={"/cadastro/Agenda"} className='btn btn-primary'>cadastrar</Link>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <div className='card text-bg-secondary'>
-                        <div className='card-body '>
-                            <h5 className='card-title'>Lista De Profissional</h5>
-                            <table className='table teble-hover  table-dark table-striped'>
+                        <div className='card-body'>
+                            <h5 className='card-title'>Lista De Serviços</h5>
+                            <table className='table teble-hover table-dark table-striped'>
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nome</th>
-                                    <th>Celular</th>
-                                    <th>E-mail</th>
-                                    <th>Cpf</th>
-                                    <th>Data de Nacimento</th>
-                                    <th>Cidade</th>
-                                    <th>Estado</th>
-                                    {/*<th>Pais</th>*/}
-                                    <th>Rua</th>
-                                    <th>Numero</th>
-                                    <th>Bairro</th>
-                                    <th>Cep</th>
-                                    <th>Salario</th>
+                                    <th>Profissional</th>
+                                    <th>Data e hora</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
                             
                             <tbody>
-                                {profissional.map(profissional => (
-                                <tr key={profissional.id}>
-                                    <td>{profissional.id}</td>
-                                    <td>{profissional.nome}</td>
-                                    <td>{profissional.celular}</td>
-                                    <td>{profissional.email}</td>
-                                    <td>{profissional.cpf}</td>
-                                    <td>{profissional.dataNacimento}</td>
-                                    <td>{profissional.cidade}</td>
-                                    <td>{profissional.estado}</td>
-                                   {/* <td>{profissional.pais}</td>*/}
-                                    <td>{profissional.rua}</td>
-                                    <td>{profissional.numero}</td>
-                                    <td>{profissional.bairro}</td>
-                                    <td>{profissional.cep}</td>
-                                    <td>{profissional.salario}</td>
-                                    <td><Link to={"/editar/profissional/"+profissional.id} className='btn btn-primary btn-sm'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pen-fill" viewBox="0 0 16 16">
+                                {agenda.map(agenda => (
+                                <tr key={agenda.id}>
+                                    <td>{agenda.id}</td>
+                                    <td>{agenda.profissional_id}</td>
+                                    <td>{agenda.data_hora}</td>
+                                    <td><Link to={"/editar/serviço/"+agenda.id} className='btn btn-primary btn-sm'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pen-fill" viewBox="0 0 16 16">
   <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
-</svg>  </Link>
-                                    <a onClick={()=> handleDelete(profissional.id)} className='btn btn-danger btn-sm'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
+</svg></Link>
+                                    <a onClick={()=>handleDelete(agenda.id)} className='btn btn-danger btn-sm'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
   <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
 </svg></a></td>
                                 </tr>
@@ -214,4 +190,4 @@ const ListagemProfissional = () => {
     );
 }
 
-export default ListagemProfissional;
+export default ListagemAgenda;

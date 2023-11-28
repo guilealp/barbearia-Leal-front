@@ -148,8 +148,8 @@ const ListagemClientes = () => {
                                         <input type="text" name='pesquisa' className='form-control' onChange={handleState}/>
                                     </div>
                                     <div className='col-2'>
-                                    <button type='submit' className='btn btn-outline-success'>Pesquisar</button>
-                                        <Link to={"/cadastro/Clientes"} className='btn btn-outline-primary'>cadastrar</Link>
+                                    <button type='submit' className='btn btn-success'>Pesquisar</button>
+                                        <Link to={"/cadastro/Clientes"} className='btn btn-primary'>cadastrar</Link>
                                     </div>
                                 </form>
                             </div>
