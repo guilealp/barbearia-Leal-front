@@ -24,8 +24,8 @@ const ListagemAgenda = () => {
 
         async function fetchData() {try{
 
-            const response = await axios.post('http://127.0.0.1:8000/api/find/serviço',
-            {nome:pesquisa},{
+            const response = await axios.post('http://127.0.0.1:8000/api/Agenda/pesquisar',
+            {data_hora:pesquisa},{
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json"
@@ -127,6 +127,10 @@ const ListagemAgenda = () => {
                         <li className="nav-item">
                             <Link to={"/listagem/Profissional"} className="nav-link active">Listagem de profissional</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to={"/listagem/Agenda"} className="nav-link active">Listagem de horarios</Link>
+                        </li>
+                        
 
                     </ul>
                 </div>

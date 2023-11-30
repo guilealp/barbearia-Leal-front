@@ -12,8 +12,17 @@ const CadastroServiço = () => {
     const[descricao, setDescricao] = useState<string>("");
     const[duracao, setDuracao] = useState<string>();
     const[preco, setPreco] = useState<string>();
+    const[nomeErro, setNomeErro] = useState<string>("");
+    const[descricaoErro, setDescricaoErro] = useState<string>("");
+    const[duracaoErro, setDuracaoErro] = useState<string>("");
+    const[precoErro, setPrecoErro] = useState<string>("");
+
 
     const cadastrarServico = (e: FormEvent) => {
+        setNomeErro("")
+        setDescricaoErro("")
+        setDuracaoErro("")
+        setPrecoErro("")
         e.preventDefault();
         const dadosDoServico={
             nome:nome,
@@ -27,8 +36,22 @@ const CadastroServiço = () => {
             "Accept":"application/json",
             "Content-Type":"application/json"
         }
-    }).then(function(response){
-        window.location.href="/listagem/Serviço";
+    }).then(function(response){ if(response.data.success === false){
+        if('nome' in response.data.error){
+            setNomeErro(response.data.error.nome[0])
+        }
+        if('descricao' in response.data.error){
+            setDescricaoErro(response.data.error.descricao[0])
+        }
+        if('duracao' in response.data.error){
+            setDuracaoErro(response.data.error.duracao[0])
+        }
+        if('preco' in response.data.error){
+            setPrecoErro(response.data.error.preco[0])
+        }
+    }
+    else{
+        window.location.href="/listagem/Serviço";}
     }).catch(function(error){
         console.log(error);
         
@@ -75,6 +98,9 @@ const CadastroServiço = () => {
                         <li className="nav-item">
                             <Link to={"/cadastro/Profissional"} className="nav-link active">Cadastro de profissional</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to={"/cadastro/Agenda"} className="nav-link active">Agendar um horario</Link>
+                        </li>
 
                     </ul>
                 </div>
@@ -90,18 +116,22 @@ const CadastroServiço = () => {
                             <div className='col-6'>
                                 <label htmlFor="nome" className='form-label'>nome</label>
                                 <input type="text" name='nome' className='form-control' required  onChange={handleState}/>
+                                <div className='text-danger'>{nomeErro}</div>
                             </div>
                             <div className='col-6'>
                             <label htmlFor="descricao" className='form-label'>descrição</label>
                                 <input type="text" name='descricao' className='form-control' required onChange={handleState}/>
+                                <div className='text-danger'>{descricaoErro}</div>
                             </div>
                             <div className='col-6'>
                             <label htmlFor="duracao" className='form-label'>duraçao</label>
                                 <input type="text" name='duracao' className='form-control' required onChange={handleState}/>
+                                <div className='text-danger'>{duracaoErro}</div>
                             </div>
                             <div className='col-6'>
                             <label htmlFor="preco" className='form-label'>preço</label>
                                 <input type="text" name='preco' className='form-control' required onChange={handleState}/>
+                                <div className='text-danger'>{precoErro}</div>
                             </div>
                             <div className='col-12'>
                                 <button type='submit' className='btn btn-success bt-sm'>Cadastrar</button>

@@ -89,6 +89,9 @@ const CadastroAgenda = () => {
                         <li className="nav-item">
                             <Link to={"/cadastro/Profissional"} className="nav-link active">Cadastro de profissional</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to={"/cadastro/Agenda"} className="nav-link active">Agendar um horario</Link>
+                        </li>
 
                     </ul>
                 </div>
