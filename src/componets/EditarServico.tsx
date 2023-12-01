@@ -97,6 +97,9 @@ const EditarServico =()=>{
                         <li className="nav-item">
                             <Link to={"/listagem/Profissional"} className="nav-link active">Listagem de profissional</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to={"/listagem/Agenda"} className="nav-link active">Listagem de horarios</Link>
+                        </li>
 
                     </ul>
                 </div>

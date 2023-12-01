@@ -231,6 +231,9 @@ const EditarProfissional =()=>{
                         <li className="nav-item">
                             <Link to={"/listagem/Profissional"} className="nav-link active">Listagem de profissional</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to={"/listagem/Agenda"} className="nav-link active">Listagem de horarios</Link>
+                        </li>
 
                     </ul>
                 </div>
@@ -241,90 +244,90 @@ const EditarProfissional =()=>{
                 <div className='container'>
                     <div className='card text-bg-secondary'>
                         <div className='card-body '>
-                            <h5 className='card-title'>Cadastro de Cliente</h5>
+                            <h5 className='card-title'>Cadastro de Profissional</h5>
                             <form onSubmit={atualizarProfissional} className='row g-4'>
                                 <div className='col-8'>
                                     <label htmlFor="nome" className='form-label'>Nome</label>
                                     <input type="text" name='nome' className='form-control' required onChange={handleState} value={nome} />
-                                    <div className='text-danger'>{nomeErro}</div>
+                                    <div className='text-dark'>{nomeErro}</div>
 
                                 </div>
                                 <div className='col-4'>
                                     <label htmlFor="celular" className='form-label'>Celular</label>
                                     <input type="text" name='celular' className='form-control' required onChange={handleState} value={celular}/>
-                                    <div className='text-danger'>{celularErro}</div>
+                                    <div className='text-dark'>{celularErro}</div>
 
                                 </div>
                                 <div className='col-12'>
                                     <label htmlFor="email" className='form-label'>Email</label>
                                     <input type="text" name='email' className='form-control' required onChange={handleState} value={email}/>
-                                    <div className='text-danger'>{emailErro}</div>
+                                    <div className='text-dark'>{emailErro}</div>
 
                                 </div>
                                 <div className='col-4'>
                                     <label htmlFor="cpf" className='form-label'>Cpf</label>
                                     <input type="text" name='cpf' className='form-control' required onChange={handleState} value={cpf}/>
-                                    <div className='text-danger'>{cpfErro}</div>
+                                    <div className='text-dark'>{cpfErro}</div>
 
                                 </div>
                                 <div className='col-4'>
                                     <label htmlFor="dataNacimento" className='form-label'>Data de Nacimento</label>
                                     <input type="date" name='dataNacimento' className='form-control' required onChange={handleState} value={dataNacimento}/>
-                                    <div className='text-danger'>{dataNacimentoErro}</div>
+                                    <div className='text-dark'>{dataNacimentoErro}</div>
 
                                 </div>
                                 <div className='col-4'>
                                     <label htmlFor="cidade" className='form-label'>Cidade</label>
                                     <input type="text" name='cidade' className='form-control' required onChange={handleState} value={cidade}/>
-                                    <div className='text-danger'>{cidadeErro}</div>
+                                    <div className='text-dark'>{cidadeErro}</div>
 
                                 </div>
                                 <div className='col-1'>
                                     <label htmlFor="estado" className='form-label'>Estado</label>
                                     <input type="text" name='estado' className='form-control' required onChange={handleState} value={estado}/>
-                                    <div className='text-danger'>{estadoErro}</div>
+                                    <div className='text-dark'>{estadoErro}</div>
 
                                 </div>
                                 <div className='col-3'>
                                     <label htmlFor="pais" className='form-label'>Pais</label>
                                     <input type="text" name='pais' className='form-control' required onChange={handleState} value={pais}/>
-                                    <div className='text-danger'>{paisErro}</div>
+                                    <div className='text-dark'>{paisErro}</div>
 
                                 </div>
                                 <div className='col-8'>
                                     <label htmlFor="rua" className='form-label'>Rua</label>
                                     <input type="text" name='rua' className='form-control' required onChange={handleState} value={rua}/>
-                                    <div className='text-danger'>{ruaErro}</div>
+                                    <div className='text-dark'>{ruaErro}</div>
 
                                 </div>
                               
                                 <div className='col-3'>
                                     <label htmlFor="numero" className='form-label'>Numero da casa</label>
                                     <input type="text" name='numero' className='form-control' required onChange={handleState} value={numero}/>
-                                    <div className='text-danger'>{numeroErro}</div>
+                                    <div className='text-dark'>{numeroErro}</div>
 
                                 </div>  <div className='col-3'>
                                     <label htmlFor="bairro" className='form-label'>Bairro</label>
                                     <input type="text" name='bairro' className='form-control' required onChange={handleState} value={bairro}/>
-                                    <div className='text-danger'>{bairroErro}</div>
+                                    <div className='text-dark'>{bairroErro}</div>
 
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="cep" className='form-label'>Cep</label>
                                     <input type="text" name='cep' className='form-control' required onChange={handleState} value={cep}/>
-                                    <div className='text-danger'>{cepErro}</div>
+                                    <div className='text-dark'>{cepErro}</div>
 
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="complemeto" className='form-label'>Complemeto</label>
                                     <input type="text" name='complemeto' className='form-control' required onChange={handleState} value={complemeto}/>
-                                    <div className='text-danger'>{complemetoErro}</div>
+                                    <div className='text-dark'>{complemetoErro}</div>
 
                                 </div>
                                 <div className='col-2'>
                                     <label htmlFor="salario" className='form-label'>Salario</label>
                                     <input type="text" name='salario' className='form-control' required onChange={handleState} value={salario}/>
-                                    <div className='text-danger'>{salarioErro}</div>
+                                    <div className='text-dark'>{salarioErro}</div>
 
                                 </div>
                                 <div className='col-12'>

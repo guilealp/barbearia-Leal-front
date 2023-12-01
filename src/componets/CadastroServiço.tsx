@@ -116,22 +116,22 @@ const CadastroServiço = () => {
                             <div className='col-6'>
                                 <label htmlFor="nome" className='form-label'>nome</label>
                                 <input type="text" name='nome' className='form-control' required  onChange={handleState}/>
-                                <div className='text-danger'>{nomeErro}</div>
+                                <div className='text-dark'>{nomeErro}</div>
                             </div>
                             <div className='col-6'>
                             <label htmlFor="descricao" className='form-label'>descrição</label>
                                 <input type="text" name='descricao' className='form-control' required onChange={handleState}/>
-                                <div className='text-danger'>{descricaoErro}</div>
+                                <div className='text-dark'>{descricaoErro}</div>
                             </div>
                             <div className='col-6'>
                             <label htmlFor="duracao" className='form-label'>duraçao</label>
                                 <input type="text" name='duracao' className='form-control' required onChange={handleState}/>
-                                <div className='text-danger'>{duracaoErro}</div>
+                                <div className='text-dark'>{duracaoErro}</div>
                             </div>
                             <div className='col-6'>
                             <label htmlFor="preco" className='form-label'>preço</label>
                                 <input type="text" name='preco' className='form-control' required onChange={handleState}/>
-                                <div className='text-danger'>{precoErro}</div>
+                                <div className='text-dark'>{precoErro}</div>
                             </div>
                             <div className='col-12'>
                                 <button type='submit' className='btn btn-success bt-sm'>Cadastrar</button>
