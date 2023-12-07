@@ -12,6 +12,9 @@ const CadastroAgenda = () => {
     const[profissional_id, setProfissional_id] = useState<string>("");;
     const[data_hora, setData_hora] = useState<string>();
     const[profissional,setProfissional] = useState<cadastroProfissionalInterface[]>([])
+
+    const[profissional_idErro, setProfissional_idErro] = useState<string>("");;
+    const[data_horaErro, setData_horaErro] = useState<string>();
     
 
 
@@ -28,9 +31,15 @@ const CadastroAgenda = () => {
             "Content-Type":"application/json"
         }
     }).then(function(response){
-
-        alert('cadastro Agenda realizado com sucesso')
-        window.location.href="/listagem/agenda";
+        if('profissional_id' in response.data.error){
+            setProfissional_idErro(response.data.error.profissional_id[0])
+        }
+        if('data_hora' in response.data.error){
+         setData_horaErro(response.data.message.data_hora[0])
+        }
+        else{
+            window.location.href = "/listagem/agenda";
+        }
     }).catch(function(error){
         console.log(error);
         
@@ -114,10 +123,12 @@ const CadastroAgenda = () => {
                                         </option>
                                     ))}
                                 </select>
+                                <div className='text-dark'>{profissional_idErro}</div>
                             </div>
                             <div className='col-6'>
                             <label htmlFor="data_hora" className='form-label'>dia e hora</label>
                                 <input type="datetime-local" name='data_hora' className='form-control' required onChange={handleState}/>
+                                <div className='text-dark'>{data_horaErro}</div>
                             </div>
                             
                             <div className='col-12'>

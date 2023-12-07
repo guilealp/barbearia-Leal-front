@@ -31,7 +31,30 @@ const ListagemServico = () => {
                     "Content-Type":"application/json"
                 }
             }).then(function(response){
-                setServico(response.data.data);
+                if (true === response.data.status) {
+
+                    setServico(response.data.data)
+                }
+                else {
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "center",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "error",
+                        title: response.data.message
+                    });
+
+
+                }
             }).catch(function(error){
                 console.log(error);
             })
@@ -79,7 +102,7 @@ const ListagemServico = () => {
             ) {
                 swalWithBootstrapButtons.fire({
                     title: "Cancelado",
-                    text: "O Cliente não foi excluido :)",
+                    text: "O Cliente não foi excluido ",
                     icon: "error"
                 });
             }

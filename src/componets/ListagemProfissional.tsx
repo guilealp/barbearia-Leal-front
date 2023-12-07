@@ -24,14 +24,37 @@ const ListagemProfissional = () => {
         async function fetchData() {
             try {
 
-                const response = await axios.post('http://127.0.0.1:8000/api/find/profissional',
+                const response = await axios.post('http://127.0.0.1:8000/api/find/profissional/nome',
                     { nome: pesquisa }, {
                     headers: {
                         "Accept": "application/json",
                         "Content-Type": "application/json"
                     }
                 }).then(function (response) {
-                    setProfissional(response.data.data);
+                    if (true === response.data.status) {
+
+                        setProfissional(response.data.data)
+                    }
+                    else {
+    
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "center",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            }
+                        });
+                        Toast.fire({
+                            icon: "error",
+                            title: response.data.message
+                        });
+    
+    
+                    }
                 }).catch(function (error) {
                     console.log(error);
                 })

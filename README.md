@@ -1,8 +1,8 @@
 
-# Barbearia Leal com PHP e Laravel
+# Barbearia Leal com PHP e Laravel e React
 
 Este projeto é focado em uma imobiliaria que ira utilizar as linguagens de programação API e retorno dos dados no formato JSON usando a linguagem PHP e o framework Laravel.
-Neste projeto ira conter o principais arquivos da Barbearia Leal como os programas de login e cadastro.
+Neste projeto ira conter o principais arquivos da Barbearia Leal como os programas de cadastro e listagem.
 
 ## Requisitos
 
@@ -14,6 +14,7 @@ Certifique-se de ter os seguintes requisitos atendidos antes de começar a traba
 - 7-Zip instalado
 - Git instalado
 - Editor de código de sua preferência
+
 
 ## Como utilizar este repositório
 

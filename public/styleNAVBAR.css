@@ -297,8 +297,7 @@ nav > ul > li:nth-child(3) {
 	transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0s !important;
 	transition-delay: 4.6s !important;
 	left: 40%;
-	background-image: url(https://static.vecteezy.com/ti/fotos-gratis/p2/11766787-mestre-em-barbearia-faz-corte-de-cabelo-masculino-com-maquina-de-cortar-cabelo-foto.JPG);
-	
+background-color: rgb(255, 255, 0);	
 }
 
 nav > ul > li:nth-child(4) {

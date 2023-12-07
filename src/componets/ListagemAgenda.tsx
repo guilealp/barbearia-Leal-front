@@ -31,7 +31,30 @@ const ListagemAgenda = () => {
                     "Content-Type":"application/json"
                 }
             }).then(function(response){
-                setAgenda(response.data.data);
+                if (true === response.data.status) {
+
+                    setAgenda(response.data.data)
+                }
+                else {
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "center",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "error",
+                        title: response.data.message
+                    });
+
+
+                }
             }).catch(function(error){
                 console.log(error);
             })
@@ -63,7 +86,7 @@ const ListagemAgenda = () => {
             if (result.isConfirmed) {
                 swalWithBootstrapButtons.fire({
                     title: "Deletado!",
-                    text: "O cliente foi excluido",
+                    text: "O horario foi excluido",
                     icon: "success"
                 });
 
@@ -79,7 +102,7 @@ const ListagemAgenda = () => {
             ) {
                 swalWithBootstrapButtons.fire({
                     title: "Cancelado",
-                    text: "O Cliente não foi excluido :)",
+                    text: "O horario não foi excluido",
                     icon: "error"
                 });
             }
